@@ -23,7 +23,10 @@ const webpackConfig = merge(baseWebpackConfig, {
         warnings: false
       }
     })
-  ]
+  ],
+  externals: {
+    vue: 'vue'
+  }
 })
 
 module.exports = webpackConfig
