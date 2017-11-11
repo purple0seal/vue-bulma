@@ -1,12 +1,12 @@
 <template>
   <nav class="pagination" v-bind:class="`is-${tabletLocation}`" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" v-on:click="onPrev()" v-bind:disabled="current === 1">Previous</a>
-    <a class="pagination-next" v-on:click="onNext()" v-bind:disabled="current === maxPage">Next page</a>
+    <a class="pagination-previous" v-on:click="onPrev()" v-bind:disabled="current === 1">{{ prevPageText }}</a>
     <ul class="pagination-list">
       <li v-for="page in pages">
         <a class="pagination-link" v-on:click="onChange(page)" v-bind:class="{ 'is-current' : page === current }">{{ page }}</a>
       </li>
     </ul>
+    <a class="pagination-next" v-on:click="onNext()" v-bind:disabled="current === maxPage">{{ nextPageText }}</a>
   </nav>
 </template>
 
@@ -35,6 +35,14 @@
       tabletLocation: {
         type: String,
         default: 'centered'
+      },
+      nextPageText: {
+        type: String,
+        default: 'Next page'
+      },
+      prevPageText: {
+        type: String,
+        default: 'Previous'
       }
     },
     data () {
